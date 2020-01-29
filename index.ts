@@ -16,13 +16,19 @@ const getRequiredInput = (name: string): string =>
 
   const octokit = new github.GitHub(githubToken)
 
+  const sha = core.getInput('sha') || github.context.sha
+  const state = getRequiredInput('state') as ReposCreateStatusParams['state']
+  const description = getRequiredInput('description')
+  const context = getRequiredInput('context')
+  const targetUrl = core.getInput('target_url')
+
   await octokit.repos.createStatus({
     ...github.context.repo,
-    sha: core.getInput('sha') || github.context.sha,
-    state: getRequiredInput('state') as ReposCreateStatusParams['state'],
-    description: getRequiredInput('description'),
-    context: getRequiredInput('context'),
-    ...{ target_url: getRequiredInput('target_url') },
+    sha,
+    state,
+    description,
+    context,
+    ...(targetUrl && { target_url: targetUrl }),
   })
 
   console.log('Successfully posted a GitHub commit status.')
