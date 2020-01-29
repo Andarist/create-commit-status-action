@@ -7,7 +7,7 @@
   ],
   "main": "./dist/index.js",
   "scripts": {
-    "build": "parcel build ./index.ts --no-source-maps --target=node --bundle-node-modules"
+    "build": "parcel build ./index.ts --no-source-maps --target=node --bundle-node-modules --no-minify"
   },
   "repository": {
     "type": "git",
