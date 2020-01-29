@@ -2,7 +2,7 @@ name: Create commit status
 description: A simple GitHub action that create a commit status using the GitHub API.
 runs:
   using: node12
-  main: ./main.js
+  main: ./dist/index.js
 inputs:
   state:
     description: The state of the status. Can be one of 'error', 'failure', 'pending', or 'success'.
