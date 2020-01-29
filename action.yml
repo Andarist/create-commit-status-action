@@ -1,0 +1,21 @@
+name: Create commit status
+description: A simple GitHub action that create a commit status using the GitHub API.
+runs:
+  using: node12
+  main: ./main.js
+inputs:
+  state:
+    description: The state of the status. Can be one of 'error', 'failure', 'pending', or 'success'.
+    required: true
+  description:
+    description: A short description of the status.
+    required: true
+  context:
+    description: A string label to differentiate this status from the status of other systems.
+    required: true
+  target_url:
+    description: The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.
+    required: false
+  sha:
+    description: A commit for which to create a status.
+    required: false

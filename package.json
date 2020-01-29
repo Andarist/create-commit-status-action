@@ -1,0 +1,34 @@
+{
+  "name": "create-commit-status-action",
+  "version": "1.0.0",
+  "description": "A simple GitHub action that create a commit status using the GitHub API.",
+  "keywords": [
+    "github-actions"
+  ],
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "parcel build ./index.ts --no-source-maps --target=node --bundle-node-modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andarist/create-commit-status-action.git"
+  },
+  "author": "Mateusz Burzyński <mateuszburzynski@gmail.com> (https://github.com/Andarist)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andarist/create-commit-status-action/issues"
+  },
+  "homepage": "https://github.com/Andarist/create-commit-status-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.5.1",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
+    "parcel": "^1.12.4",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.5"
+  }
+}
