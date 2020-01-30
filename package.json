@@ -7,7 +7,7 @@
   ],
   "main": "./dist/index.js",
   "scripts": {
-    "build": "parcel build ./index.ts --no-source-maps --target=node --bundle-node-modules --no-minify"
+    "build": "parcel build ./index.ts --no-source-maps --target=node --bundle-node-modules"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,8 @@
     "parcel": "^1.12.4",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
+  },
+  "resolutions": {
+    "universal-user-agent": "^3.0.0"
   }
 }

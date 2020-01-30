@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import { ReposCreateStatusParams } from '@octokit/rest'
+
+type StatusState = 'error' | 'failure' | 'pending' | 'success'
 
 const getRequiredInput = (name: string): string =>
   core.getInput(name, { required: true })
@@ -17,7 +18,7 @@ const getRequiredInput = (name: string): string =>
   const octokit = new github.GitHub(githubToken)
 
   const sha = core.getInput('sha') || github.context.sha
-  const state = getRequiredInput('state') as ReposCreateStatusParams['state']
+  const state = getRequiredInput('state') as StatusState
   const description = getRequiredInput('description')
   const context = getRequiredInput('context')
   const targetUrl = core.getInput('target_url')
