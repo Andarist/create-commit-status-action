@@ -16,6 +16,12 @@ inputs:
   target_url:
     description: The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.
     required: false
+    default: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
   sha:
     description: A commit for which to create a status.
     required: false
+    default: ${{ github.event.client_payload.sha }}
+  github_token:
+    description: Override the GitHub runner provided token.
+    default: ${{ github.token }}
+    required: true
