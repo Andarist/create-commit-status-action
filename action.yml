@@ -9,7 +9,7 @@ inputs:
     required: true
   description:
     description: A short description of the status.
-    required: true
+    required: false
   context:
     description: A string label to differentiate this status from the status of other systems.
     required: true

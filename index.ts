@@ -6,23 +6,14 @@ type StatusState = 'error' | 'failure' | 'pending' | 'success'
 const getRequiredInput = (name: string): string =>
   core.getInput(name, { required: true })
 ;(async () => {
-  let githubToken = process.env.GITHUB_TOKEN
-
-  if (!githubToken) {
-    core.setFailed(
-      'Please add the `GITHUB_TOKEN` to the report commit status action.',
-    )
-    return
-  }
-
-  const octokit = new github.GitHub(githubToken)
-
   const sha = core.getInput('sha') || github.context.sha
   const state = getRequiredInput('state') as StatusState
-  const description = getRequiredInput('description')
+  const description = core.getInput('description')
   const context = getRequiredInput('context')
   const targetUrl = core.getInput('target_url')
+  const githubToken = core.getInput('github_token')
 
+  const octokit = new github.GitHub(githubToken)
   await octokit.repos.createStatus({
     ...github.context.repo,
     sha,
